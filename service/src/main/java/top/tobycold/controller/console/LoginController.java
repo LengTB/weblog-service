@@ -6,10 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import top.tobycold.admin.JwtConfig;
 import top.tobycold.dto.UserDTO;
 import top.tobycold.pojo.UserEntity;
@@ -20,7 +17,7 @@ import java.util.Date;
 
 @Slf4j
 @RestController
-@RequestMapping("controller/login")
+@RequestMapping("console/login")
 @Tag("登录相关接口")
 public class LoginController {
 
@@ -28,13 +25,13 @@ public class LoginController {
     UserService userService;
 
     @PostMapping()
-    @Operation(summary = "登录接口")
+    @Operation(summary = "用户登录接口")
     public Result<String> login(@RequestBody UserDTO userDTO, HttpServletRequest request) {
-        log.info("登录用户详细：{} -> ip地址：{}", userDTO, request.getRemoteAddr());
+        log.info("登录用户 -> ip：{} -> userDTO：{} ", request.getRemoteAddr(), userDTO);
         UserEntity user = userService.select(userDTO);
         //TODO 这里可能走异常处理器，不会查询出结果
         log.info("service查询结果UserEntity:{}", user);
-        if (user == null){
+        if (user == null) {
             return Result.error("账号或密码错误");
         }
         String token = JWT.create()
@@ -46,11 +43,26 @@ public class LoginController {
     }
 
     @PostMapping("register")
-    @Operation(summary = "注册接口")
-    public Result<String>  register(@RequestBody UserDTO userDTO, HttpServletRequest httpServletRequest){
+    @Operation(summary = "用户注册接口")
+    public Result<String> register(@RequestBody UserDTO userDTO, HttpServletRequest httpServletRequest) {
+        log.info("用户注册 -> ip：{} -> userDTO：{}", httpServletRequest.getRemoteAddr(), userDTO);
         userDTO.setIp(httpServletRequest.getRemoteAddr());
         userService.insert(userDTO);
 
-        return Result.success();
+        return Result.success("注册成功");
+    }
+
+    @DeleteMapping
+    @Operation(summary = "删除用户接口")
+    public Result<String> deleteUser() {
+//        return Result.success("删除成功");
+        return Result.error("暂未开发");
+    }
+
+    @PutMapping
+    @Operation(summary = "修改用户接口")
+    public Result<String> updateUser() {
+//        return Result.success("修改成功");
+        return Result.error("暂未开发");
     }
 }

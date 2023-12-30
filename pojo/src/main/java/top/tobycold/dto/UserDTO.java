@@ -1,6 +1,7 @@
 package top.tobycold.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -8,6 +9,7 @@ import java.io.Serializable;
 @Data
 @Schema(name = "用户信息")
 public class UserDTO implements Serializable {
+
 
     @Schema(name = "账号")
     private String account;

@@ -27,4 +27,6 @@ public interface UserService {
      * @param userDTO
      */
     UserEntity select(UserDTO userDTO);
+
+    UserEntity getById(Long id);
 }

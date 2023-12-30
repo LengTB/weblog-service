@@ -20,6 +20,9 @@ public class Result<T> {
     public static <T> Result<T> success(T data) {
         return new Result<T>(1, "success", data);
     }
+    public static <T> Result<T> success(String message) {
+        return new Result<T>(1,  message, null);
+    }
     public static <T> Result<T> success(String message, T t) {
         return new Result<T>(1, message,t);
     }

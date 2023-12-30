@@ -3,7 +3,7 @@ package top.tobycold.util;
 public class BaseContext {
     public static final ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
-    public static String getContext(){
+    public static String getId(){
         return threadLocal.get();
     }
 
