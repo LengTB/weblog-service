@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/dtd/mybatis-3-mapper.dtd"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.tobycold.mapper.UserMapper">
+
+    <select id="getByAccount" resultType="top.tobycold.pojo.UserEntity">
+        select * from tb_login where username = #{account}
+    </select>
+</mapper>
