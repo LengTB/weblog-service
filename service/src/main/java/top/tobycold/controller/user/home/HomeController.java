@@ -1,4 +1,4 @@
-package top.tobycold.controller.home;
+package top.tobycold.controller.user.home;
 
 
 import cn.hutool.core.io.FileUtil;
@@ -9,8 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
-import top.tobycold.dao.Articles;
-import top.tobycold.dao.Essays;
+import top.tobycold.dao.SummaryPages;
 import top.tobycold.util.Result;
 import top.tobycold.exception.ImageException;
 import top.tobycold.pojo.SummaryEntity;
@@ -32,27 +31,9 @@ public class HomeController {
     @Value("${main.path}")
     private String PathMain;
 
-    @Operation(summary = "请求图片资源")
-    @GetMapping("{date}/{name:.+}")
-    public void getImage(@PathVariable(name = "date") String date, @PathVariable(name = "name") String name, HttpServletRequest request, HttpServletResponse response) {
-        log.info("IP:{} -> 端发起请求图片资源,图片时间:{}, 图片名称:{}", request.getLocalAddr(), date, name);
-        try {
-            byte[] bytes = FileUtil.readBytes(PathMain + date + "//" + name);
-            response.setContentLength(bytes.length);
-            //设置资源为下载
-            //response.setHeader("Content-Disposition", "attachment; filename=\"video.mp4\"");
-
-            //使资源回显而不是下载
-            response.setContentType("video/mp4");
-            response.getOutputStream().write(bytes);
-        } catch (Exception e) {
-            throw new ImageException("没有这个资源");
-        }
-    }
-
     @Operation(summary = "请求文章")
     @GetMapping
-    public Result<?> getArticles() {
+    public Result<?> getSummaryList() {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate now = LocalDate.now();
@@ -72,31 +53,42 @@ public class HomeController {
         }
 
 //TODO 拆分成两个接口
-        Articles cold = Articles.builder()
+        SummaryPages summaryPages = SummaryPages.builder()
                 .bodys(articleEntities)
                 .total(articleEntities.size())
                 .build();
 
-
-        return Result.success("success", cold);
+        return Result.success("success", summaryPages);
     }
 
-    @GetMapping("card")
-    public Result<?> getCard(){
 
 
+    @Operation(summary = "请求图片资源")
+    @GetMapping("{date}/{name:.+}")
+    public void getImage(@PathVariable(name = "date") String date, @PathVariable(name = "name") String name, HttpServletRequest request, HttpServletResponse response) {
+        log.info("IP:{} -> 端发起请求图片资源,图片时间:{}, 图片名称:{}", request.getLocalAddr(), date, name);
+        try {
+            byte[] bytes = FileUtil.readBytes(PathMain + date + "//" + name);
+            response.setContentLength(bytes.length);
+            //设置资源为下载
+            //response.setHeader("Content-Disposition", "attachment; filename=\"video.mp4\"");
 
-        return Result.success("success");
+            //使资源回显而不是下载
+            response.setContentType("video/mp4");
+            response.getOutputStream().write(bytes);
+        } catch (Exception e) {
+            throw new ImageException("没有这个资源");
+        }
     }
 
+    @Operation(summary = "查询所有文件映射路径")
     @GetMapping("all")
     public Result<?> getDAtaList(){
-
+        log.info("查询所有文件映射路径");
         File file = new File(PathMain);
         String[] folder = file.list();
 
         List<Object> response = new ArrayList<>();
-
 
         Arrays.stream(folder).forEach((r)-> {
             File file1 = new File(PathMain + r);
@@ -108,8 +100,6 @@ public class HomeController {
         });
 
         return Result.success("success", response.get(1));
-
     }
-
 
 }

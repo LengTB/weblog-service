@@ -9,5 +9,5 @@ public class Card {
     String name;
     String signature;
     Integer grade;
-    Boolean admin;
+    Boolean isAdmin;
 }

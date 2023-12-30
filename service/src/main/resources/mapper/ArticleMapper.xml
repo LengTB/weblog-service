@@ -5,7 +5,7 @@
 
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
         insert into tb_context(title,tags,routeName,body,routeName,createUser,updateUser,updateTime,ip, seeCount, loveCount)
-        values (${title},${tags},${routeName},${body},${routeName},${createUser},${updateUser},${updateTime},${ip}, ${seeCount}, ${loveCount})
+        values (#{title},#{tags},#{routeName},#{body},#{routeName},#{createUser},#{updateUser},#{updateTime},#{ip}, #{seeCount}, #{loveCount})
     </insert>
     <delete id="delete">
         delete from tb_context

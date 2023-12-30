@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class Articles {
+public class SummaryPages {
     List<SummaryEntity> bodys;
 
     Integer total;

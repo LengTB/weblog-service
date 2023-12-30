@@ -1,9 +1,11 @@
 package top.tobycold.pojo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 @Schema(name = "用户实体")
 public class UserEntity {
     @Schema(name = "自增id")
