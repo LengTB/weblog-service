@@ -15,9 +15,13 @@ public class SpringMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
 
         registry.addInterceptor(jwtTokenAdminInterceptor)
-                .addPathPatterns("/api/**")
-                .excludePathPatterns("/api/console/login")
-                .excludePathPatterns("/api/data");
+                .addPathPatterns("/**")//默认拦截所有
+                .excludePathPatterns("/user/resources")//排除 resources 请求接口
+                .excludePathPatterns("/user/resources/**")//排除 resources 下所有请求接口
+                .excludePathPatterns("/user/card")//排除 个人信息 请求接口
+                .excludePathPatterns("/console/login")//排除 登录 相关接口
+                .excludePathPatterns("/console/login/**");
+
     }
 
 

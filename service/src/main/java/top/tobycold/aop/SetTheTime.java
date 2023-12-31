@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import top.tobycold.annotation.AutoSetTime;
 import top.tobycold.util.AutoTimeType;
+import top.tobycold.util.BaseContext;
 
 import java.lang.reflect.Method;
 import java.time.LocalDateTime;
@@ -30,15 +31,24 @@ public class SetTheTime {
             return;
 
         try {
+            String id = BaseContext.getId();
             if (mode == AutoTimeType.CREATE) {
                 Method setCreateTime = arg.getClass().getMethod("setCreateTime", String.class);
                 Method setCreateUser = arg.getClass().getMethod("setCreateUser", String.class);
                 Method setUpdateTime = arg.getClass().getMethod("setUpdateTime", String.class);
                 Method setUpdateUser = arg.getClass().getMethod("setUpdateUser", String.class);
-                Method setIp = arg.getClass().getMethod("setIp", String.class);
 
                 setCreateTime.invoke(arg, LocalDateTime.now());
-
+                setCreateUser.invoke(arg, id);
+                setUpdateTime.invoke(arg, LocalDateTime.now());
+                setUpdateUser.invoke(arg, id);
+            }else if(mode == AutoTimeType.UPDATE){
+                Method setUpdateTime = arg.getClass().getMethod("setUpdateTime", String.class);
+                Method setUpdateUser = arg.getClass().getMethod("setUpdateUser", String.class);
+                setUpdateTime.invoke(arg, LocalDateTime.now());
+                setUpdateUser.invoke(arg, id);
+            }else {
+                log.error("AutoTimeType中没这个模式");
             }
 
         } catch (Exception e) {

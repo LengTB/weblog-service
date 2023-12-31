@@ -24,13 +24,13 @@ public class LoginController {
     @Autowired
     UserService userService;
 
-    @PostMapping()
+    @PostMapping
     @Operation(summary = "用户登录接口")
     public Result<String> login(@RequestBody UserDTO userDTO, HttpServletRequest request) {
         log.info("登录用户 -> ip：{} -> userDTO：{} ", request.getRemoteAddr(), userDTO);
         UserEntity user = userService.select(userDTO);
         //TODO 这里可能走异常处理器，不会查询出结果
-        log.info("service查询结果UserEntity:{}", user);
+//        log.info("service查询结果UserEntity:{}", user);
         if (user == null) {
             return Result.error("账号或密码错误");
         }

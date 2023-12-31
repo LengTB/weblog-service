@@ -1,5 +1,6 @@
 package top.tobycold.mapper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import top.tobycold.annotation.AutoSetTime;
 import top.tobycold.pojo.ArticleEntity;
@@ -14,5 +15,10 @@ public interface ArticleMapper {
     @AutoSetTime
     void save(ArticleEntity articleEntity);
 
-    void delete(Integer id);
+    /**
+     * 根据id删除文章
+     * @param id
+     */
+    @Delete("delete from articles where id = #{id}")
+    void delete(Long id);
 }

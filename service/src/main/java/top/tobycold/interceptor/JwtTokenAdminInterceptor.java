@@ -22,7 +22,7 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.info("请求端验证ip:{}",request.getLocalAddr());
+        log.info("JWTToken拦截器拦截请求-> ip:{}",request.getLocalAddr());
 
         String token = request.getHeader("token");
         //校验时间

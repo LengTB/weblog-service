@@ -1,12 +1,12 @@
 package top.tobycold.service;
 
-import top.tobycold.dto.ContextDTO;
+import top.tobycold.dto.ArticleDTO;
 
 public interface ArticleService {
 
     /**
      * 保存文章
-     * @param contextDTO
+     * @param articleDTO
      */
-    void save(ContextDTO contextDTO);
+    void save(ArticleDTO articleDTO);
 }

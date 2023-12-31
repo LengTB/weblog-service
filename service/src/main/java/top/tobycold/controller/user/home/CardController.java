@@ -12,7 +12,7 @@ import top.tobycold.util.BaseContext;
 import top.tobycold.util.Result;
 
 @RestController
-@RequestMapping("user/home")
+@RequestMapping("user/card")
 public class CardController {
 
     /**
@@ -32,7 +32,7 @@ public class CardController {
      */
     @Autowired
     UserService userService;
-    @GetMapping("card")
+    @GetMapping
     @Operation(summary = "获取个人名片信息")
     public Result<?> getCard(){
         String id = BaseContext.getId();

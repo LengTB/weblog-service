@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/dtd/mybatis-3-mapper.dtd"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.tobycold.mapper.SummaryMapper">
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into summarys
+        <trim suffix="(" suffixOverrides="," prefix=")">
+            <if test="id != null">
+                id
+            </if>
+            <if test="title != null">
+                title
+            </if>
+            <if test="body != null">
+                body
+            </if>
+            <if test="contextId != null">
+                contextId
+            </if>
+        </trim>
+        <trim prefix="values(" suffixOverrides="," suffix=")">
+            <if test="id != null">
+                #{id}
+            </if>
+            <if test="title != null">
+                #{title}
+            </if>
+            <if test="body != null">
+                #{body}
+            </if>
+            <if test="contextId != null">
+                #{contextId}
+            </if>
+        </trim>
+    </insert>
+
+</mapper>

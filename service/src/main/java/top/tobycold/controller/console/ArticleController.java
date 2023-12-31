@@ -7,7 +7,7 @@ import top.tobycold.pojo.ArticleEntity;
 import top.tobycold.util.Result;
 
 @Slf4j
-@RestController
+@RestController("ConsoleArticle")
 @RequestMapping("console/article")
 public class ArticleController {
 
