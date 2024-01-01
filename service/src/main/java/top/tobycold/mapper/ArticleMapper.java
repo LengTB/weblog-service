@@ -2,6 +2,7 @@ package top.tobycold.mapper;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import top.tobycold.annotation.AutoSetTime;
 import top.tobycold.pojo.ArticleEntity;
 
@@ -21,4 +22,12 @@ public interface ArticleMapper {
      */
     @Delete("delete from articles where id = #{id}")
     void delete(Long id);
+
+    /**
+     * 根据路由名称查询文章
+     * @param routerName
+     * @return
+     */
+    @Select("select * from articles where routerName = #{routerName}")
+    ArticleEntity select(String routerName);
 }

@@ -5,32 +5,32 @@
 
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
         insert into summarys
-        <trim suffix="(" suffixOverrides="," prefix=")">
+        <trim prefix="(" suffixOverrides="," suffix=")" >
             <if test="id != null">
-                id
+                id,
             </if>
             <if test="title != null">
-                title
+                title,
             </if>
             <if test="body != null">
-                body
+                body,
             </if>
-            <if test="contextId != null">
-                contextId
+            <if test="routerName != null">
+                routerName
             </if>
         </trim>
         <trim prefix="values(" suffixOverrides="," suffix=")">
             <if test="id != null">
-                #{id}
+                #{id},
             </if>
             <if test="title != null">
-                #{title}
+                #{title},
             </if>
             <if test="body != null">
-                #{body}
+                #{body},
             </if>
-            <if test="contextId != null">
-                #{contextId}
+            <if test="routerName != null">
+                #{routerName}
             </if>
         </trim>
     </insert>

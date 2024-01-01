@@ -17,6 +17,4 @@ public class SummaryEntity {
     private String routerName;
     @Schema(name = "摘要")
     private String body;
-    @Schema(name = "文章id")
-    private String contextId;
 }
