@@ -8,13 +8,15 @@ import top.tobycold.mapper.SummaryMapper;
 import top.tobycold.pojo.SummaryEntity;
 import top.tobycold.service.SummaryService;
 
+import java.util.List;
+
 @Service
 public class SummaryServiceImpl implements SummaryService {
 
     @Autowired
     SummaryMapper summaryMapper;
     /**
-     * 添加摘要
+     * 添加 摘要
      * @param articleDTO
      */
     public void save(ArticleDTO articleDTO){
@@ -28,7 +30,7 @@ public class SummaryServiceImpl implements SummaryService {
     }
 
     /**
-     * 修改摘要
+     * 修改 摘要
      * @param articleDTO
      */
     public void update(ArticleDTO articleDTO){
@@ -36,13 +38,17 @@ public class SummaryServiceImpl implements SummaryService {
     }
 
     /**
-     * 删除摘要
+     * 删除 摘要
      * @param articleDTO
      */
     public void delete(ArticleDTO articleDTO){
 
     }
     /**
-     * 分页查询摘要
+     * 分页查询 摘要
      */
+    public List<SummaryEntity> selectByPages(int page){
+        int total = 10;
+        return summaryMapper.selectByPages(page * total, total);
+    }
 }

@@ -34,5 +34,8 @@
             </if>
         </trim>
     </insert>
+    <select id="selectByPages" resultType="top.tobycold.pojo.SummaryEntity">
+        select * from summarys limit #{page},#{total}
+    </select>
 
 </mapper>
