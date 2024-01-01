@@ -5,7 +5,7 @@
 
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
         insert into articles
-        <trim suffix=")" suffixOverrides="," prefix="(">
+        <trim prefix="(" suffixOverrides="," suffix=")">
             <if test="title != null and title != ''">
                 title,
             </if>
@@ -18,8 +18,8 @@
             <if test="body != null and body != ''">
                 body,
             </if>
-            <if test="creatTime != null and creatTime != ''">
-                creatTime,
+            <if test="createTime != null">
+                createTime,
             </if>
             <if test="createUser != null and createUser != ''">
                 createUser,
@@ -27,16 +27,16 @@
             <if test="updateUser != null and updateUser != ''">
                 updateUser,
             </if>
-            <if test="updateTime != null and updateTime != ''">
+            <if test="updateTime != null">
                 updateTime,
             </if>
             <if test="ip != null and ip != ''">
                 ip,
             </if>
-            <if test="loveCount != null and loveCount != ''">
+            <if test="loveCount != null">
                 loveCount,
             </if>
-            <if test="seeCount != null and seeCount != ''">
+            <if test="seeCount != null">
                 seeCount
             </if>
         </trim>
@@ -53,8 +53,8 @@
             <if test="body != null and body != ''">
                 #{body},
             </if>
-            <if test="creatTime != null and creatTime != ''">
-                #{creatTime},
+            <if test="createTime != null">
+                #{createTime},
             </if>
             <if test="createUser != null and createUser != ''">
                 #{createUser},
@@ -62,16 +62,16 @@
             <if test="updateUser != null and updateUser != ''">
                 #{updateUser},
             </if>
-            <if test="updateTime != null and updateTime != ''">
+            <if test="updateTime != null">
                 #{updateTime},
             </if>
             <if test="ip != null and ip != ''">
                 #{ip},
             </if>
-            <if test="loveCount != null and loveCount != ''">
+            <if test="loveCount != null">
                 #{loveCount},
             </if>
-            <if test="seeCount != null and seeCount != ''">
+            <if test="seeCount != null ">
                 #{seeCount}
             </if>
         </trim>

@@ -10,4 +10,12 @@ public interface ArticleService {
      * @param articleDTO
      */
     void save(ArticleDTO articleDTO);
+
+    /**
+     * 根据 路由名称 查询文章
+     * @param routerName
+     * @return
+     */
+
+    ArticleEntity selectByRouterName(String routerName);
 }

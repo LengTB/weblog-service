@@ -1,13 +1,14 @@
 package top.tobycold.pojo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Schema(name = "文章实体")
 public class ArticleEntity {
     @Schema(name = "主键自增id")
@@ -21,7 +22,7 @@ public class ArticleEntity {
     @Schema(name = "正文")
     private String body;
     @Schema(name = "创建时间")
-    private LocalDateTime creatTime;
+    private LocalDateTime createTime;
     @Schema(name = "创建用户")
     private String createUser;
     @Schema(name = "修改用户")
