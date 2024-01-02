@@ -25,4 +25,10 @@ public interface SummaryService {
      * 分页查询摘要
      */
     List<SummaryEntity> selectByPages(int page);
+
+    /**
+     * 查询总数
+     * @return
+     */
+    Long getTotal();
 }

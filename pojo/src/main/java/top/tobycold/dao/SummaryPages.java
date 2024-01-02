@@ -9,7 +9,6 @@ import java.util.List;
 @Data
 @Builder
 public class SummaryPages {
-    List<SummaryEntity> bodys;
-
-    Integer total;
+    List<SummaryEntity> summaryEntities;
+    Long total;
 }

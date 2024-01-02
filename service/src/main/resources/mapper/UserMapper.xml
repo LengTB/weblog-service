@@ -17,11 +17,32 @@
             <if test="signature != null and signature != ''">
                 signature,
             </if>
-            <if test="grade != null and grade != ''">
+            <if test="grade != null">
                 grade,
             </if>
-            <if test="isAdmin != null and isAdmin != ''">
+            <if test="isAdmin != null">
                 isAdmin,
+            </if>
+            <if test="commentCount != null">
+                commentCount,
+            </if>
+            <if test="likeCount != null">
+                likeCount,
+            </if>
+            <if test="tagCount != null">
+                tagCount,
+            </if>
+            <if test="github != null and github != ''">
+                github,
+            </if>
+            <if test="qq != null and qq != ''">
+                qq,
+            </if>
+            <if test="bilibili != null and bilibili != ''">
+                bilibili,
+            </if>
+            <if test="avatar != null and avatar != ''">
+                avatar,
             </if>
         </trim>
         <trim prefix="values(" suffixOverrides="," suffix=")">
@@ -37,11 +58,32 @@
             <if test="signature != null and signature != ''">
                 #{signature},
             </if>
-            <if test="grade != null and grade != ''">
+            <if test="grade != null">
                 #{grade},
             </if>
-            <if test="isAdmin != null and isAdmin != ''">
+            <if test="isAdmin != null">
                 #{isAdmin},
+            </if>
+            <if test="commentCount != null">
+                #{commentCount},
+            </if>
+            <if test="likeCount != null">
+                #{likeCount},
+            </if>
+            <if test="tagCount != null">
+                #{tagCount},
+            </if>
+            <if test="github != null and github != ''">
+                #{github},
+            </if>
+            <if test="qq != null and qq != ''">
+                #{qq},
+            </if>
+            <if test="bilibili != null and bilibili != ''">
+                #{bilibili},
+            </if>
+            <if test="avatar != null and avatar != ''">
+                #{avatar},
             </if>
         </trim>
     </insert>

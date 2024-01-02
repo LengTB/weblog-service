@@ -1,6 +1,5 @@
 package top.tobycold.service.impl;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.tobycold.dto.ArticleDTO;
@@ -51,4 +50,12 @@ public class SummaryServiceImpl implements SummaryService {
         int total = 10;
         return summaryMapper.selectByPages(page * total, total);
     }
+    /**
+     * 查询总数
+     * @return
+     */
+    public Long getTotal(){
+        return summaryMapper.getTotal();
+    }
+
 }
