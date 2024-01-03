@@ -3,7 +3,6 @@ package top.tobycold.mapper;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import top.tobycold.annotation.AutoSetTime;
 import top.tobycold.pojo.ArticleEntity;
 
 @Mapper

@@ -3,7 +3,8 @@ package top.tobycold.admin;
 public enum ArticleStatus {
     INVISIBLE(0),
     VISIBLE(1),
-    UNPUBLISHED(2);
+    UNPUBLISHED(2),
+    ALL(null);
 
     private Integer status;
 

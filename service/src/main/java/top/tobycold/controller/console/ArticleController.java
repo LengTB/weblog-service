@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import top.tobycold.dto.ArticleDTO;
-import top.tobycold.pojo.ArticleEntity;
 import top.tobycold.service.ArticleService;
 import top.tobycold.service.SummaryService;
 import top.tobycold.util.Result;

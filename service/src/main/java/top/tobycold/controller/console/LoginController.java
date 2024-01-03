@@ -1,11 +1,13 @@
 package top.tobycold.controller.console;
 
 import cn.hutool.jwt.JWT;
+import cn.hutool.jwt.JWTUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 import top.tobycold.admin.JwtConfig;
 import top.tobycold.dto.UserDTO;
@@ -24,6 +26,9 @@ public class LoginController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    RedisTemplate redisTemplate;
+
     @PostMapping
     @Operation(summary = "用户登录接口")
     public Result<String> login(@RequestBody UserDTO userDTO, HttpServletRequest request) {
@@ -39,6 +44,7 @@ public class LoginController {
                 .setKey(JwtConfig.TOKEN_KEY.getBytes())
                 .setPayload("id", user.getId())
                 .sign();
+
         return Result.success("登录成功", token);
     }
 
@@ -64,5 +70,14 @@ public class LoginController {
     public Result<String> updateUser() {
 //        return Result.success("修改成功");
         return Result.error("暂未开发");
+    }
+
+    @GetMapping
+    public Result<Object> verifyLogin(HttpServletRequest request) {
+        String token = request.getHeader("token");
+        if (token == null || !JWTUtil.verify(token, JwtConfig.TOKEN_KEY.getBytes())) {
+            return Result.error("验证失败");
+        }
+        return Result.success("验证成功");
     }
 }

@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import top.tobycold.dto.UserDTO;
 import top.tobycold.pojo.UserEntity;
 import top.tobycold.service.UserService;
 import top.tobycold.util.BaseContext;

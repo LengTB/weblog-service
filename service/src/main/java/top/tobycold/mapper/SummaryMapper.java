@@ -1,7 +1,6 @@
 package top.tobycold.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 import top.tobycold.annotation.AutoSetTime;
 import top.tobycold.pojo.SummaryEntity;
 
@@ -13,8 +12,7 @@ public interface SummaryMapper {
     @AutoSetTime
     void save(SummaryEntity summaryEntity);
 
-    List<SummaryEntity> selectByPages(int page, int total);
+    List<SummaryEntity> selectByPages(Integer status, Integer start, Integer total);
 
-    @Select("select count(*) from summarys")
-    Long getTotal();
+    Long getTotal(Integer status);
 }

@@ -8,11 +8,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-import top.tobycold.util.BaseContext;
 import top.tobycold.admin.JwtConfig;
-
-
-import static top.tobycold.admin.JwtConfig.TOKEN_KEY;
+import top.tobycold.util.BaseContext;
 
 @Slf4j
 @Component
@@ -28,7 +25,8 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
         //校验时间
         try {
             JWT jwt = JWTUtil.parseToken(token);
-            if(!JWTUtil.verify(token, TOKEN_KEY.getBytes())){
+            if(!JWTUtil.verify(token, JwtConfig.TOKEN_KEY.getBytes())){
+                log.info("JWT验证失败");
                 response.setStatus(401);
                 return false;
             }

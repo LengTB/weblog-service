@@ -77,7 +77,22 @@
         </trim>
     </insert>
     <select id="selectByPages" resultType="top.tobycold.pojo.SummaryEntity">
-        select * from summarys limit #{page},#{total}
+        select * from summarys
+            <where>
+                <if test="status != null">
+                    status = #{status}
+                </if>
+            </where>
+            limit #{start}, #{total}
+    </select>
+    <select id="getTotal" resultType="java.lang.Long">
+        select COUNT(*)
+        from summarys
+        <where>
+            <if test="status != null">
+                status = #{status}
+            </if>
+        </where>
     </select>
 
 </mapper>

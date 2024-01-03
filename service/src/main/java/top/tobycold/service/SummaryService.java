@@ -24,11 +24,11 @@ public interface SummaryService {
     /**
      * 分页查询摘要
      */
-    List<SummaryEntity> selectByPages(int page);
+    List<SummaryEntity> selectByPages(Integer status, int page);
 
     /**
      * 查询总数
      * @return
      */
-    Long getTotal();
+    Long getTotal(Integer status);
 }

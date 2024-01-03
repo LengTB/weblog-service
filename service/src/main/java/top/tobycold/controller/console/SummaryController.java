@@ -1,4 +1,4 @@
-package top.tobycold.controller.user.home;
+package top.tobycold.controller.console;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -18,11 +18,10 @@ import top.tobycold.util.Result;
 
 import java.util.List;
 
-@RestController("UserSummary")
-@RequestMapping("user/summary")
+@RestController("ConsoleSummary")
+@RequestMapping("console/summary")
 @Tag(name = "摘要相关接口")
 public class SummaryController {
-
     @Autowired
     SummaryService summaryService;
 
@@ -40,11 +39,15 @@ public class SummaryController {
     @Operation(summary = "根据id分页查询")
     public Result<SummaryPages> getPages(@PathVariable Integer page){
         TransactionStatus transactionStatus = dataSourceTransactionManager.getTransaction(transactionDefinition);
+
+        /**
+         * 前端在处理状态时，不太方便，这里考虑把status 改为 varchar 类型
+         */
         try {
-            List<SummaryEntity> summaryEntities = summaryService.selectByPages(ArticleStatus.VISIBLE.STATUS(), page);
+            List<SummaryEntity> summaryEntities = summaryService.selectByPages(ArticleStatus.ALL.STATUS(), page);
             SummaryPages summaryPages = SummaryPages.builder()
                     .summaryEntities(summaryEntities)
-                    .total(summaryService.getTotal(ArticleStatus.VISIBLE.STATUS()))
+                    .total(summaryService.getTotal(ArticleStatus.ALL.STATUS()))
                     .build();
             dataSourceTransactionManager.commit(transactionStatus);
             return Result.success(summaryPages);
