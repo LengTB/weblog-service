@@ -2,6 +2,7 @@ package top.tobycold.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import top.tobycold.admin.ArticleStatus;
 import top.tobycold.dto.ArticleDTO;
 import top.tobycold.mapper.SummaryMapper;
 import top.tobycold.pojo.SummaryEntity;
@@ -22,8 +23,11 @@ public class SummaryServiceImpl implements SummaryService {
 
         SummaryEntity summary = SummaryEntity.builder()
                 .title(articleDTO.getTitle())
-                .body(articleDTO.getSummary())
+                .summary(articleDTO.getSummary())
                 .routerName(articleDTO.getRouterName())
+                .status(ArticleStatus.INVISIBLE.STATUS())
+                .loveCount(0)
+                .seeCount(0)
                 .build();
         summaryMapper.save(summary);
     }

@@ -12,11 +12,32 @@
             <if test="title != null">
                 title,
             </if>
-            <if test="body != null">
-                body,
+            <if test="summary != null">
+                summary,
             </if>
             <if test="routerName != null">
-                routerName
+                routerName,
+            </if>
+            <if test="createUser != null">
+                createUser,
+            </if>
+            <if test="createTime != null">
+                createTime,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="loveCount != null">
+                loveCount,
+            </if>
+            <if test="seeCount != null">
+                seeCount,
+            </if>
+            <if test="updateTime != null">
+                updateTime,
+            </if>
+            <if test="updateUser != null">
+                updateUser
             </if>
         </trim>
         <trim prefix="values(" suffixOverrides="," suffix=")">
@@ -26,11 +47,32 @@
             <if test="title != null">
                 #{title},
             </if>
-            <if test="body != null">
-                #{body},
+            <if test="summary != null">
+                #{summary},
             </if>
             <if test="routerName != null">
-                #{routerName}
+                #{routerName},
+            </if>
+            <if test="createUser != null">
+                #{createUser},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="loveCount != null">
+                #{loveCount},
+            </if>
+            <if test="seeCount != null">
+                #{seeCount},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+            <if test="updateUser != null">
+                #{updateUser}
             </if>
         </trim>
     </insert>

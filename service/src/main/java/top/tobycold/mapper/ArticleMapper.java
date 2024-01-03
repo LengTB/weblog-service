@@ -13,7 +13,6 @@ public interface ArticleMapper {
      * 存储文章
      * @param articleEntity
      */
-    @AutoSetTime
     void save(ArticleEntity articleEntity);
 
     /**

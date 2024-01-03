@@ -21,10 +21,15 @@ public class SummaryController {
 
     @Autowired
     SummaryService summaryService;
+
+    /**
+     * 这里只要数据页码是为了不让爬友一次性爬光内容，这里我只让分页查询，但是没给这条数据加限流，后期有空再补上
+     * @param page
+     * @return
+     */
     @GetMapping("{page}")
     @Operation(summary = "根据id分页查询")
     public Result<SummaryPages> getPages(@PathVariable Integer page){
-        //泛型也待确定！！！
 
         List<SummaryEntity> summaryEntities = summaryService.selectByPages(page);
         SummaryPages summaryPages = SummaryPages.builder()
@@ -33,4 +38,13 @@ public class SummaryController {
                 .build();
         return Result.success(summaryPages);
     }
+    /**
+     * 需求：
+     *      这里还很多需求没有完善哦
+     *
+     *      创建人
+     *      创建时间
+     *      文章发布状态
+     *      是否为可见 --这里跟发布状态合并一个数据，用 1 代表 可见， 0 代表不可见， 2 代表未发布
+     */
 }

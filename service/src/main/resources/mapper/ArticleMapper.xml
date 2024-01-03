@@ -18,26 +18,8 @@
             <if test="body != null and body != ''">
                 body,
             </if>
-            <if test="createTime != null">
-                createTime,
-            </if>
-            <if test="createUser != null and createUser != ''">
-                createUser,
-            </if>
-            <if test="updateUser != null and updateUser != ''">
-                updateUser,
-            </if>
-            <if test="updateTime != null">
-                updateTime,
-            </if>
             <if test="ip != null and ip != ''">
                 ip,
-            </if>
-            <if test="loveCount != null">
-                loveCount,
-            </if>
-            <if test="seeCount != null">
-                seeCount
             </if>
         </trim>
         <trim prefix="values(" suffixOverrides="," suffix=")">
@@ -53,51 +35,10 @@
             <if test="body != null and body != ''">
                 #{body},
             </if>
-            <if test="createTime != null">
-                #{createTime},
-            </if>
-            <if test="createUser != null and createUser != ''">
-                #{createUser},
-            </if>
-            <if test="updateUser != null and updateUser != ''">
-                #{updateUser},
-            </if>
-            <if test="updateTime != null">
-                #{updateTime},
-            </if>
             <if test="ip != null and ip != ''">
                 #{ip},
             </if>
-            <if test="loveCount != null">
-                #{loveCount},
-            </if>
-            <if test="seeCount != null ">
-                #{seeCount}
-            </if>
         </trim>
     </insert>
-
-<!--    <insert id="save">-->
-<!--        insert into articles-->
-<!--        <trim suffix="(" suffixOverrides=",">-->
-<!--            <if test="title != null and title != ''">title,</if>-->
-<!--            <if test="tags != null and tags != ''">tags,</if>-->
-<!--            <if test="routerName != null and routerName != ''">routerName,</if>-->
-<!--            <if test="body != null and body != ''">body,</if>-->
-<!--            <if test="creatTime != null and creatTime != ''">creatTime,</if>-->
-<!--            <if test="createUser != null and createUser != ''">createUser,</if>-->
-<!--            <if test="updateUser != null and updateUser != ''">updateUser,</if>-->
-<!--            <if test="updateTime != null and updateTime != ''">updateTime,</if>-->
-<!--            <if test="ip != null and ip != ''">ip,</if>-->
-<!--            <if test="loveCount != null and loveCount != ''">loveCount,</if>-->
-<!--            <if test="seeCount != null and seeCount != ''">seeCount,</if>-->
-<!--        </trim>-->
-<!--        values (-->
-<!--        <foreach item="item" open=":" close="," separator="," collection="">-->
-<!--            <if test="item != null and item != ''">${item}</if>-->
-<!--        </foreach>-->
-<!--        )-->
-<!--    </insert>-->
-
 
 </mapper>

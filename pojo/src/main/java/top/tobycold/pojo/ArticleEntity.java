@@ -21,18 +21,6 @@ public class ArticleEntity {
     private String routerName;
     @Schema(name = "正文")
     private String body;
-    @Schema(name = "创建时间")
-    private LocalDateTime createTime;
-    @Schema(name = "创建用户")
-    private String createUser;
-    @Schema(name = "修改用户")
-    private String updateUser;
-    @Schema(name = "修改时间")
-    private LocalDateTime updateTime;
     @Schema(name = "发布ip")
     private String ip;
-    @Schema(name = "观看人数")
-    private Integer seeCount;
-    @Schema(name = "点赞人数")
-    private Integer loveCount;
 }

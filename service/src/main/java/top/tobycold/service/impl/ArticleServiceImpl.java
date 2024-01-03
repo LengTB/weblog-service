@@ -20,30 +20,13 @@ public class ArticleServiceImpl implements ArticleService {
 
     /**
      * 保存文章
-     * * 这里做一个说明，按理来说，articleId 应该跟主键id是一样的，因为summary表是依附于article表存在的，他们之间的数据是一一对应的！
      *
-     * @param articleDTO * ArticleEntity ------ ArticleDTO
-     *                   id                    title
-     *                   title                 summary
-     *                   tags                  tags
-     *                   routerName            routerName
-     *                   body                  creatTime
-     *                   creatTime             body
-     *                   createUser
-     *                   updateUser
-     *                   updateTime
-     *                   ip
-     *                   loveCount
-     *                   seeCount
-     *                   --------------------------------
+     * @param articleDTO
+     * @return
      */
     public void save(ArticleDTO articleDTO) {
         ArticleEntity article = ArticleEntity.builder()
-                .ip(articleDTO.getIp())
-                .loveCount(0)
-                .seeCount(0)
                 .build();
-
         BeanUtils.copyProperties(articleDTO, article);
         articleMapper.save(article);
     }
