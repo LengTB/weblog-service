@@ -17,7 +17,7 @@ public class LogInfo {
 
     @Before("log()")
     public void consoleLog(JoinPoint joinPoint){
-//        Object[] args = joinPoint.getArgs();
-//        log.info("{}方法：日志记录：{}",joinPoint.getSignature().getName(), args);
+        Object[] args = joinPoint.getArgs();
+        log.info("{}方法：日志记录：参数 -> {}",joinPoint.getSignature().getName(), args);
     }
 }

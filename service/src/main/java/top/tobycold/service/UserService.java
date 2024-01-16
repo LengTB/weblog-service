@@ -3,6 +3,9 @@ package top.tobycold.service;
 import top.tobycold.dto.UserDTO;
 import top.tobycold.pojo.UserEntity;
 
+/**
+ * 用户表的操作类
+ */
 public interface UserService {
     /**
      * 添加用户
@@ -28,5 +31,4 @@ public interface UserService {
      */
     UserEntity select(UserDTO userDTO);
 
-    UserEntity getById(Long id);
 }

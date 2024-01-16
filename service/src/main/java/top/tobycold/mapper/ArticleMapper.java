@@ -26,6 +26,6 @@ public interface ArticleMapper {
      * @param routerName
      * @return
      */
-    @Select("select * from articles where routerName = #{routerName}")
+    @Select("select * from articles where path = #{path}")
     ArticleEntity select(String routerName);
 }

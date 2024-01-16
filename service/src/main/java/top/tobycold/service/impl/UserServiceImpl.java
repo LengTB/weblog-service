@@ -54,12 +54,4 @@ public class UserServiceImpl implements UserService {
         return userEntity;
     }
 
-    /**
-     * 根据id查询用户
-     * @return
-     */
-    public UserEntity getById(Long id) {
-        UserEntity user = UserEntity.builder().id(id).build();
-        return userMapper.select(user);
-    }
 }

@@ -21,7 +21,9 @@ public class SpringMvcConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/user/card")//排除 个人信息 请求接口
                 .excludePathPatterns("/user/summary/*")//排除 摘要 请求接口
                 .excludePathPatterns("/console/login")//排除 登录 相关接口
-                .excludePathPatterns("/console/login/**");
+                .excludePathPatterns("/console/register")//排除 注册 相关接口
+                .excludePathPatterns("/console/code");//排除 获取验证码 相关接口
+
 
     }
 

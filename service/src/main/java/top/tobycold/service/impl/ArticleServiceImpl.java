@@ -30,10 +30,10 @@ public class ArticleServiceImpl implements ArticleService {
     /**
      * 根据 路由名称 查询文章
      *
-     * @param routerName
+     * @param path
      * @return
      */
-    public ArticleEntity selectByRouterName(String routerName) {
-        return articleMapper.select(routerName);
+    public ArticleEntity selectByPath(String path) {
+        return articleMapper.select(path);
     }
 }

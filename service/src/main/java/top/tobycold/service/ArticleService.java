@@ -13,9 +13,9 @@ public interface ArticleService {
 
     /**
      * 根据 路由名称 查询文章
-     * @param routerName
+     * @param path
      * @return
      */
 
-    ArticleEntity selectByRouterName(String routerName);
+    ArticleEntity selectByPath(String path);
 }

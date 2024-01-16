@@ -22,14 +22,14 @@ public class ArticleController {
     ArticleService articleService;
 
     /**
-     * @param routerName
+     * @param path
      * @return
      */
-    @GetMapping("{routerName}")
+    @GetMapping("{path}")
     @Operation(summary = "获取文章接口")
-    public Result<ArticleEntity> getArticle(@PathVariable String routerName){
-        log.info("请求路由为：{} 的文章", routerName);
-        ArticleEntity articleEntity = articleService.selectByRouterName(routerName);
+    public Result<ArticleEntity> getArticle(@PathVariable String path){
+        log.info("请求路由为：{} 的文章", path);
+        ArticleEntity articleEntity = articleService.selectByPath(path);
         return Result.success(articleEntity);
     }
 }

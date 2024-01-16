@@ -31,18 +31,11 @@ public class CardController {
      */
     @Autowired
     UserService userService;
+
     @GetMapping
     @Operation(summary = "获取个人名片信息")
-    public Result<?> getCard(){
-        String id = BaseContext.getId();
-        if(id != null && id.length() != 0){
-            UserEntity userEntity = userService.getById(Long.valueOf(id));
-            return Result.success("获取个人名片信息成功", userEntity);
-        }
-
-         // * 默认返回第一个
-        UserEntity userEntity = userService.getById(1L);
-        return Result.success("获取个人名片信息成功", userEntity);
+    public Result<?> getCard() {
+        return Result.error();
     }
 
 }

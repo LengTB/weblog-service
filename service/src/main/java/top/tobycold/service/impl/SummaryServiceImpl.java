@@ -25,15 +25,6 @@ public class SummaryServiceImpl implements SummaryService {
      */
     public void save(ArticleDTO articleDTO) {
 
-        SummaryEntity summary = SummaryEntity.builder()
-                .title(articleDTO.getTitle())
-                .summary(articleDTO.getSummary())
-                .routerName(articleDTO.getRouterName())
-                .status(ArticleStatus.INVISIBLE.STATUS())
-                .loveCount(0L)
-//                .seeCount(0L)
-                .build();
-        summaryMapper.save(summary);
     }
 
     /**

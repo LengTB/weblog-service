@@ -35,7 +35,7 @@ public class SetTheTime {
             return;
 
         try {
-            String id = BaseContext.getId();
+            String name = BaseContext.getName();
             LocalDateTime now = LocalDateTime.now();
             if (mode == AutoTimeType.CREATE) {
                 Method setCreateTime = arg.getClass().getMethod("setCreateTime", LocalDateTime.class);
@@ -44,14 +44,14 @@ public class SetTheTime {
                 Method setUpdateUser = arg.getClass().getMethod("setUpdateUser", String.class);
 
                 setCreateTime.invoke(arg, now);
-                setCreateUser.invoke(arg, id);
+                setCreateUser.invoke(arg, name);
                 setUpdateTime.invoke(arg, now);
-                setUpdateUser.invoke(arg, id);
+                setUpdateUser.invoke(arg, name);
             }else if(mode == AutoTimeType.UPDATE){
                 Method setUpdateTime = arg.getClass().getMethod("setUpdateTime", LocalDateTime.class);
                 Method setUpdateUser = arg.getClass().getMethod("setUpdateUser", String.class);
                 setUpdateTime.invoke(arg, now);
-                setUpdateUser.invoke(arg, id);
+                setUpdateUser.invoke(arg, name);
             }else {
                 log.error("AutoTimeType中没这个模式");
             }
