@@ -5,37 +5,31 @@
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         insert into user
         <trim prefix="(" suffixOverrides="," suffix=")">
+            <if test="name != null and name != ''">
+                name,
+            </if>
             <if test="account != null and account != ''">
                 account,
             </if>
             <if test="password != null and password != ''">
                 password,
             </if>
-            <if test="name != null and name != ''">
-                name,
-            </if>
-            <if test="signature != null and signature != ''">
-                signature,
+            <if test="identity != null and identity != ''">
+                identity,
             </if>
             <if test="grade != null">
                 grade,
             </if>
-            <if test="isAdmin != null">
-                isAdmin,
+            <if test="email != null">
+                email,
             </if>
-            <if test="commentCount != null">
-                commentCount,
+            <if test="phone != null">
+                phone,
             </if>
-            <if test="likeCount != null">
-                likeCount,
-            </if>
-            <if test="tagCount != null">
-                tagCount,
-            </if>
-            <if test="github != null and github != ''">
+            <if test="github != null">
                 github,
             </if>
-            <if test="qq != null and qq != ''">
+            <if test="qq != null">
                 qq,
             </if>
             <if test="bilibili != null and bilibili != ''">
@@ -46,32 +40,26 @@
             </if>
         </trim>
         <trim prefix="values(" suffixOverrides="," suffix=")">
+            <if test="name != null and name != ''">
+                #{name},
+            </if>
             <if test="account != null and account != ''">
                 #{account},
             </if>
             <if test="password != null and password != ''">
                 #{password},
             </if>
-            <if test="name != null and name != ''">
-                #{name},
-            </if>
-            <if test="signature != null and signature != ''">
-                #{signature},
+            <if test="identity != null and identity != ''">
+                #{identity},
             </if>
             <if test="grade != null">
                 #{grade},
             </if>
-            <if test="isAdmin != null">
-                #{isAdmin},
+            <if test="email != null">
+                #{email},
             </if>
-            <if test="commentCount != null">
-                #{commentCount},
-            </if>
-            <if test="likeCount != null">
-                #{likeCount},
-            </if>
-            <if test="tagCount != null">
-                #{tagCount},
+            <if test="phone != null">
+                #{phone},
             </if>
             <if test="github != null and github != ''">
                 #{github},
@@ -87,80 +75,125 @@
             </if>
         </trim>
     </insert>
-
     <select id="select" resultType="top.tobycold.pojo.UserEntity">
         select * from user
         <where>
             <if test="id != null and id != 0">
                 id = #{id}
             </if>
-            <if test="account != null and account != ''">
-                and account = #{account}
-            </if>
-            <if test="password != null and password != ''">
-                and password = #{password}
-            </if>
-            <if test="name != null and name != ''">
+            <if test="name != null">
                 and name = #{name}
             </if>
-            <if test="signature != null and signature != ''">
-                and signature = #{signature}
-            </if>
-            <if test="grade != null and grade != ''">
-                and grade = #{grade}
-            </if>
-            <if test="isAdmin != null and isAdmin != ''">
-                and isAdmin = #{isAdmin}
-            </if>
-        </where>
-    </select>
-
-    <delete id="delete">
-        delete from user
-        <where>
             <if test="account != null">
-                account = #{account}
+                and account = #{account}
             </if>
             <if test="password != null">
                 and password = #{password}
             </if>
-            <if test="name != null">
-                and name = #{name}
-            </if>
-            <if test="signature != null">
-                and signature = #{signature}
+            <if test="identity != null">
+                and identity = #{identity}
             </if>
             <if test="grade != null">
                 and grade = #{grade}
             </if>
-            <if test="isAdmin != null">
-                and isAdmin = #{isAdmin}
+            <if test="email != null">
+                and email = #{email}
+            </if>
+            <if test="phone != null">
+                and phone = #{phone}
+            </if>
+            <if test="github != null">
+                and github = #{github}
+            </if>
+            <if test="qq != null">
+                and qq = #{qq}
+            </if>
+            <if test="bilibili != null">
+                and bilibili = #{bilibili}
+            </if>
+            <if test="avatar != null">
+                and avatar = #{avatar}
+            </if>
+        </where>
+    </select>
+    <delete id="delete">
+        delete from user
+        <where>
+            <if test="id != null and id != 0">
+                id = #{id}
+            </if>
+            <if test="name != null">
+                and name = #{name}
+            </if>
+            <if test="account != null">
+                and account = #{account}
+            </if>
+            <if test="password != null">
+                and password = #{password}
+            </if>
+            <if test="identity != null">
+                and identity = #{identity}
+            </if>
+            <if test="grade != null">
+                and grade = #{grade}
+            </if>
+            <if test="email != null">
+                and email = #{email}
+            </if>
+            <if test="phone != null">
+                and phone = #{phone}
+            </if>
+            <if test="github != null">
+                and github = #{github}
+            </if>
+            <if test="qq != null">
+                and qq = #{qq}
+            </if>
+            <if test="bilibili != null">
+                and bilibili = #{bilibili}
+            </if>
+            <if test="avatar != null">
+                and avatar = #{avatar}
             </if>
         </where>
     </delete>
-
-
     <update id="update" useGeneratedKeys="true" keyProperty="id">
         update user
         <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
             <if test="account != null">
                 account = #{account},
             </if>
             <if test="password != null">
                 password = #{password},
             </if>
-            <if test="name != null">
-                name = #{name},
-            </if>
-            <if test="signature != null">
-                signature = #{signature},
+            <if test="identity != null">
+                identity = #{identity},
             </if>
             <if test="grade != null">
                 grade = #{grade},
             </if>
-            isAdmin = #{isAdmin}
+            <if test="email != null">
+                email = #{email}
+            </if>
+            <if test="phone != null">
+                phone = #{phone}
+            </if>
+            <if test="github != null">
+                github = #{github}
+            </if>
+            <if test="qq != null">
+                qq = #{qq}
+            </if>
+            <if test="bilibili != null">
+                bilibili = #{bilibili}
+            </if>
+            <if test="avatar != null">
+                avatar = #{avatar}
+            </if>
         </set>
         where id = #{id};
     </update>
-
 </mapper>

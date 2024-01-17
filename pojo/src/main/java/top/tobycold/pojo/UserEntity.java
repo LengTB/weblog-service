@@ -5,13 +5,16 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
 @Schema(name = "用户实体")
 public class UserEntity {
     @Schema(name = "用户自增id")
     private Long id;
     @Schema(name = "名称")
     private String name;
+    @Schema(name = "账号")
+    private String account;
+    @Schema(name = "密码")
+    private String password;
     @Schema(name = "身份")
     private String identity;
     @Schema(name = "等级")

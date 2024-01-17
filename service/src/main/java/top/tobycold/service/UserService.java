@@ -7,28 +7,23 @@ import top.tobycold.pojo.UserEntity;
  * 用户表的操作类
  */
 public interface UserService {
-    /**
-     * 添加用户
-     * @param userDTO
-     */
-    void insert(UserDTO userDTO);
 
     /**
      * 删除用户
-     * @param userDTO
+     * @param userEntity
      */
-    void delete(UserDTO userDTO);
+    void delete(UserEntity userEntity);
 
     /**
      * 修改用户
-     * @param userDTO
+     * @param userEntity
      */
-    void update(UserDTO userDTO);
+    void update(UserEntity userEntity);
 
     /**
      * 查询用户
-     * @param userDTO
+     * @param userEntity
      */
-    UserEntity select(UserDTO userDTO);
+    UserEntity select(UserEntity userEntity);
 
 }
