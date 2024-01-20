@@ -26,9 +26,4 @@ public interface SummaryService {
      */
     List<SummaryEntity> selectByPages(Integer status, int page);
 
-    /**
-     * 查询总数
-     * @return
-     */
-    Long getTotal(Integer status);
 }

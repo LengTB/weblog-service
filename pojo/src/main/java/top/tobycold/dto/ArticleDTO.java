@@ -9,6 +9,8 @@ import lombok.Data;
 public class ArticleDTO {
     @Schema(name = "标题")
     private String title;
+    @Schema(name = "摘要")
+    private String summary;
     @Schema(name = "路径")
     private String path;
     @Schema(name = "状态")

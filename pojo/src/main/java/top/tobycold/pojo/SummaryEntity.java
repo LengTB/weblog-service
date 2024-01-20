@@ -19,10 +19,8 @@ public class SummaryEntity {
     private String path;
     @Schema(name = "内容")
     private String body;
-    //状态
     @Schema(name = "状态")
     private Integer status;
-    //文章详细id
     @Schema(name = "文章id")
     private String articleDetailId;
 }

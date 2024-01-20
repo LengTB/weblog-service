@@ -2,43 +2,102 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/dtd/mybatis-3-mapper.dtd"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="top.tobycold.mapper.ArticleMapper">
-
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
-        insert into articles
-        <trim prefix="(" suffixOverrides="," suffix=")">
-            <if test="title != null and title != ''">
-                title,
+        insert into articles_detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
             </if>
-            <if test="tags != null and tags != ''">
-                tags,
+            <if test="likeCount != null">
+                likeCount,
             </if>
-            <if test="routerName != null and routerName != ''">
-                routerName,
+            <if test="seeCount != null">
+                seeCount,
             </if>
-            <if test="body != null and body != ''">
-                body,
+            <if test="createTime != null">
+                createTime,
             </if>
-            <if test="ip != null and ip != ''">
+            <if test="createUser != null">
+                createUser,
+            </if>
+            <if test="updateTime != null">
+                updateTime,
+            </if>
+            <if test="updateUser != null">
+                updateUser,
+            </if>
+            <if test="ip != null">
                 ip,
             </if>
         </trim>
         <trim prefix="values(" suffixOverrides="," suffix=")">
-            <if test="title != null and title != ''">
-                #{title},
+            <if test="id != null">
+                #{id},
             </if>
-            <if test="tags != null and tags != ''">
-                #{tags},
+            <if test="likeCount != null">
+                #{likeCount},
             </if>
-            <if test="routerName != null and routerName != ''">
-                #{routerName},
+            <if test="seeCount != null">
+                #{seeCount},
             </if>
-            <if test="body != null and body != ''">
-                #{body},
+            <if test="createTime != null">
+                #{createTime},
             </if>
-            <if test="ip != null and ip != ''">
-                #{ip},
+            <if test="createUser != null">
+                #{createUser},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+            <if test="updateUser != null">
+                #{updateUser},
+            </if>
+            <if test="ip != null">
+                #{ip}
+            </if>
+        </trim>;
+        insert into articles
+        <trim prefix="(" suffixOverrides="," suffix=")">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="body != null">
+                body,
+            </if>
+            <if test="path != null">
+                path
             </if>
         </trim>
+        <trim prefix="values(" suffixOverrides="," suffix=")">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="body != null">
+                #{body},
+            </if>
+            <if test="path != null">
+                #{path}
+            </if>
+        </trim>;
+
+        insert into summarys
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="body != null">
+                body,
+            </if>
+            <if test="path != null">
+                path,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+
     </insert>
 
 </mapper>

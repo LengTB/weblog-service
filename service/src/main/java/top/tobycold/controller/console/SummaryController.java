@@ -25,12 +25,8 @@ public class SummaryController {
     @Autowired
     SummaryService summaryService;
 
-    @Autowired
-    DataSourceTransactionManager dataSourceTransactionManager;
-
-    @Autowired
-    TransactionDefinition transactionDefinition;
     /**
+     * 这是控制台
      * 这里只要数据页码是为了不让爬友一次性爬光内容，这里我只让分页查询，但是没给这条数据加限流，后期有空再补上
      * @param page
      * @return
@@ -38,7 +34,6 @@ public class SummaryController {
     @GetMapping("{page}")
     @Operation(summary = "根据id分页查询")
     public Result<SummaryPages> getPages(@PathVariable Integer page){
-        TransactionStatus transactionStatus = dataSourceTransactionManager.getTransaction(transactionDefinition);
 
         /**
          * 前端在处理状态时，不太方便，这里考虑把status 改为 varchar 类型
@@ -47,12 +42,10 @@ public class SummaryController {
             List<SummaryEntity> summaryEntities = summaryService.selectByPages(ArticleStatus.ALL.STATUS(), page);
             SummaryPages summaryPages = SummaryPages.builder()
                     .summaryEntities(summaryEntities)
-                    .total(summaryService.getTotal(ArticleStatus.ALL.STATUS()))
+                    .total(summaryEntities.size())
                     .build();
-            dataSourceTransactionManager.commit(transactionStatus);
             return Result.success(summaryPages);
         }catch (Exception e){
-            dataSourceTransactionManager.rollback(transactionStatus);
             return Result.error("分页查询失败");
         }
 

@@ -13,7 +13,6 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
     ArticleMapper articleMapper;
-
     /**
      * 保存文章
      *
@@ -21,12 +20,10 @@ public class ArticleServiceImpl implements ArticleService {
      * @return
      */
     public void save(ArticleDTO articleDTO) {
-        ArticleEntity article = ArticleEntity.builder()
-                .build();
+        ArticleEntity article = new ArticleEntity();
         BeanUtils.copyProperties(articleDTO, article);
         articleMapper.save(article);
     }
-
     /**
      * 根据 路由名称 查询文章
      *

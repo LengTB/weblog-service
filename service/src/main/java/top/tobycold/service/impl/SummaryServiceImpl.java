@@ -53,14 +53,4 @@ public class SummaryServiceImpl implements SummaryService {
         int pages = page * total;
         return summaryMapper.selectByPages(status, pages, total);
     }
-
-    /**
-     * 查询总数
-     *
-     * @return
-     */
-    public Long getTotal(Integer status) {
-        return summaryMapper.getTotal(status);
-    }
-
 }

@@ -44,7 +44,7 @@ public class SummaryController {
             List<SummaryEntity> summaryEntities = summaryService.selectByPages(ArticleStatus.VISIBLE.STATUS(), page);
             SummaryPages summaryPages = SummaryPages.builder()
                     .summaryEntities(summaryEntities)
-                    .total(summaryService.getTotal(ArticleStatus.VISIBLE.STATUS()))
+                    .total(summaryEntities.size())
                     .build();
             dataSourceTransactionManager.commit(transactionStatus);
             return Result.success(summaryPages);

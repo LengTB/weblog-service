@@ -14,5 +14,4 @@ public interface SummaryMapper {
 
     List<SummaryEntity> selectByPages(Integer status, Integer start, Integer total);
 
-    Long getTotal(Integer status);
 }

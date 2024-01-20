@@ -10,5 +10,5 @@ import java.util.List;
 @Builder
 public class SummaryPages {
     List<SummaryEntity> summaryEntities;
-    Long total;
+    int total;
 }

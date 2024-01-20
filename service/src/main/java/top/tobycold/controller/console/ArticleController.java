@@ -23,29 +23,22 @@ import top.tobycold.util.Result;
 @Tag(name = "文章模块相关接口")
 public class ArticleController {
 
-
     @Autowired
     ArticleService articleService;
 
     @Autowired
-    SummaryService summaryService;
-
-    @Autowired
     DataSourceTransactionManager dataSourceTransactionManager;
-
     @Autowired
     TransactionDefinition transactionDefinition;
-
     @PostMapping
     @Operation(summary = "存储文章")
     public Result<String> saveArticle(@RequestBody ArticleDTO articleDTO, HttpServletRequest httpServletRequest) {
-        log.info("用户ip：{} -> 存储文章 article:{}", httpServletRequest.getRemoteAddr(), articleDTO);
+        //开启事务
         TransactionStatus transaction = dataSourceTransactionManager.getTransaction(transactionDefinition);
         try {
+
             articleDTO.setIp(httpServletRequest.getRemoteAddr());
             articleService.save(articleDTO);
-            summaryService.save(articleDTO);
-
             dataSourceTransactionManager.commit(transaction);
             return Result.success("存储文章成功");
         } catch (Exception e) {

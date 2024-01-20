@@ -4,75 +4,46 @@
 <mapper namespace="top.tobycold.mapper.SummaryMapper">
 
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
-        insert into summarys
-        <trim prefix="(" suffixOverrides="," suffix=")" >
+        insert into summary
+        <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
             </if>
             <if test="title != null">
                 title,
             </if>
-            <if test="summary != null">
-                summary,
+
+            <if test="body != null">
+                body,
             </if>
-            <if test="routerName != null">
-                routerName,
-            </if>
-            <if test="createUser != null">
-                createUser,
-            </if>
-            <if test="createTime != null">
-                createTime,
+            <if test="path != null">
+                path,
             </if>
             <if test="status != null">
                 status,
             </if>
-            <if test="loveCount != null">
-                loveCount,
-            </if>
-            <if test="seeCount != null">
-                seeCount,
-            </if>
-            <if test="updateTime != null">
-                updateTime,
-            </if>
-            <if test="updateUser != null">
-                updateUser
+            <if test="articleDetailId != null">
+                article_detail_id
             </if>
         </trim>
-        <trim prefix="values(" suffixOverrides="," suffix=")">
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 #{id},
             </if>
             <if test="title != null">
                 #{title},
             </if>
-            <if test="summary != null">
-                #{summary},
+            <if test="body != null">
+                #{body},
             </if>
-            <if test="routerName != null">
-                #{routerName},
-            </if>
-            <if test="createUser != null">
-                #{createUser},
-            </if>
-            <if test="createTime != null">
-                #{createTime},
+            <if test="path != null">
+                #{path},
             </if>
             <if test="status != null">
                 #{status},
             </if>
-            <if test="loveCount != null">
-                #{loveCount},
-            </if>
-            <if test="seeCount != null">
-                #{seeCount},
-            </if>
-            <if test="updateTime != null">
-                #{updateTime},
-            </if>
-            <if test="updateUser != null">
-                #{updateUser}
+            <if test="articleDetailId != null">
+                #{articleDetailId}
             </if>
         </trim>
     </insert>
@@ -85,14 +56,4 @@
             </where>
             limit #{start}, #{total}
     </select>
-    <select id="getTotal" resultType="java.lang.Long">
-        select COUNT(*)
-        from summarys
-        <where>
-            <if test="status != null">
-                status = #{status}
-            </if>
-        </where>
-    </select>
-
 </mapper>
